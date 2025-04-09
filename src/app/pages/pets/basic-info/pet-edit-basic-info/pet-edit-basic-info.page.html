@@ -1,0 +1,274 @@
+<div class="info">
+  <p>Por favor, ingresa a continuación la información básica de tu mascota</p>
+</div>
+
+<form
+  #frm="ngForm"
+  (submit)="frm.form.valid && savePet(frm)"
+  novalidate enctype="multipart/form-data"
+>
+  <div class="pet-profile">
+    <ion-item lines="none" class="item-with-circle">
+      <div>
+        <ion-label class="circle">
+          <ion-img
+            src="{{productionServerUrl}}{{pet.photourl}}"
+            *ngIf="imageLoaded === false"
+          ></ion-img>
+          <ion-img [src]="imageUrl" *ngIf="imageUrl"></ion-img>
+        </ion-label>
+      </div>
+      <div class="small-circle">
+        <ion-icon
+          (click)="openFileInput()"
+          (click)="fileInput.click()"
+          class="camera-ico"
+          src="/assets/images/add_img.svg"
+          role="img"
+        ></ion-icon>
+      </div>
+      <input
+        #fileInput
+        type="file"
+        name="image"
+        accept="image/*"
+        style="display: none"
+        (change)="handleFileInput($event)"
+      />
+    </ion-item>
+    
+  </div>
+
+  <ion-list mode="md">
+    <div class="item">
+      <ion-label>Nombre</ion-label>
+      <ion-input
+        type="text"
+        name="nombre"
+        required
+        maxlength=10
+        [(ngModel)]="pet.nombre"
+        id="nombre"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && nombre.invalid }"
+          #nombre = "ngModel"
+        ngDefaultControl
+      ></ion-input>
+    </div>
+
+    <div class="horizontal-fields-container">
+      <div class="item horizontal-fields">
+        <ion-label>Especie</ion-label>
+        <select
+          class="species"
+          name="especie"
+          [(ngModel)]="pet.especie"
+          id="especie"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && especie.invalid }"
+          #especie = "ngModel"
+          required
+          ngDefaultControl
+        >
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+          <option value="Conejo">Conejo</option>
+          <option value="Conejo">Tortuga</option>
+          <option value="Ave">Ave</option>
+          <option value="Hamsters">Hámsters</option>
+          <option value="Ratones y ratas" >Ratones y ratas</option >
+          <option value="Cobayas">Cobayas</option>
+          <option value="Iguana">Iguana</option>
+          <option value="Conejo">Otro</option>
+        </select>
+      </div>
+      <div class="item horizontal-fields">
+        <ion-label>Sexo</ion-label>
+        <select
+          name="sexo"
+          class="sexo"
+          [(ngModel)]="pet.sexo"
+          id="sexo"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && sexo.invalid }"
+          #sexo = "ngModel"
+          required
+          ngDefaultControl
+        >
+          <option value="Macho">Macho</option>
+          <option value="Hembra">Hembra</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item">
+      <ion-label>Raza</ion-label>
+      <ion-input
+        type="text"
+        name="raza"
+        [(ngModel)]="pet.raza"
+        id="raza"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && raza.invalid }"
+          #raza = "ngModel"
+        ngDefaultControl
+      ></ion-input>
+    </div>
+
+    <div class="horizontal-fields-container">
+      <div class="item horizontal-fields">
+        <ion-label>Fecha de Nacimiento</ion-label>
+        <ion-input
+          type="date"
+          name="fechanacimiento"
+          required
+          [(ngModel)]="pet.fechanacimiento"
+          id="fechanacimiento"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && fechanacimiento.invalid }"
+          #fechanacimiento = "ngModel"
+          ngDefaultControl
+        >
+        </ion-input>
+      </div>
+
+      <div class="item horizontal-fields">
+        <ion-label>Peso (Kg)</ion-label>
+        <ion-input
+          type="number"
+          name="peso"
+          required
+          [(ngModel)]="pet.peso"
+          maxlength=2
+            id="peso"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && peso.invalid }"
+          #peso = "ngModel"
+          min=1
+          step=1
+          ngDefaultControl
+        ></ion-input>
+      </div>
+    </div>
+
+    <div class="item">
+      <ion-label>Color</ion-label>
+      <ion-input
+        type="text"
+        name="color"
+        maxlength=20
+        required
+        [(ngModel)]="pet.color"
+        id="color"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && color.invalid }"
+          #color = "ngModel"
+        ngDefaultControl
+      ></ion-input>
+    </div>
+
+    <div class="horizontal-fields-container">
+      <!-- <div class="item horizontal-fields">
+        <ion-label>Seguro</ion-label>
+        <ion-input
+          type="text"
+          name="seguro"
+          [(ngModel)]="pet.seguro"
+          ngDefaultControl
+        >
+        </ion-input>
+      </div> -->
+
+      <div class="item horizontal-fields">
+        <ion-label>Temperamento</ion-label>
+        <select
+          class="temperament"
+          name="temperamento"
+          [(ngModel)]="pet.temperamento"
+          id="temperamento"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && temperamento.invalid }"
+          #temperamento = "ngModel"
+          required
+          ngDefaultControl
+        >
+          <option value="Tranquilo">Tranquilo</option>
+          <option value="Amistoso">Amistoso</option>
+          <option value="Agresivo">Agresivo</option>
+          <option value="Miedoso">Miedoso</option>
+        </select>
+      </div>
+      <div class="item horizontal-fields">
+        <ion-label>Estatura (Cm)</ion-label>
+        <ion-input
+          type="number"
+          name="estatura"
+          [(ngModel)]="pet.estatura"
+          id="estatura"
+            maxlength=3
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && estatura.invalid }"
+          #estatura = "ngModel"
+          required
+          min=1
+          step=1
+          ngDefaultControl
+        ></ion-input>
+      </div>
+    </div>
+
+    <div class="horizontal-fields-container">
+
+      <div class="item horizontal-fields">
+        <ion-label>No. Chip (Opcional)</ion-label>
+        <ion-input
+          type="number"
+          name="nochip"
+          [(ngModel)]="pet.nochip"
+          ngDefaultControl
+        ></ion-input>
+      </div>
+      <div class="item horizontal-fields">
+        <ion-label>Esterilización</ion-label>
+        <select
+          class="sexo"
+          name="castrated"
+          [(ngModel)]="pet.castrated"
+          id="castrated"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && castrated.invalid }"
+          #castrated = "ngModel"
+          required
+          ngDefaultControl
+        >
+          <option value=true>Si</option>
+          <option value=false>No</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item">
+      <ion-label>Descripción</ion-label>
+      <ion-textarea
+        name="descripcion"
+        rows="4"
+        fill="outline"
+        [autoGrow]="true"
+        maxlength=300
+        required
+        [(ngModel)]="pet.descripcion"
+        id="descripcion"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && descripcion.invalid }"
+          #descripcion = "ngModel"
+        ngDefaultControl
+      ></ion-textarea>
+    </div>
+  </ion-list>
+  <section id="buttons">
+    <button class="button" type="submit">
+      <label>Actualizar Mascota</label>
+    </button>
+  </section>
+</form>

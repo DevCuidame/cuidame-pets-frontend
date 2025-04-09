@@ -1,0 +1,271 @@
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+    <div class="info">
+      <p>
+        Gracias por adquirir nuestros servicios. A continuación puedes registrar
+        los datos de la cuenta.
+      </p>
+    </div>
+    <form #frm="ngForm" (submit)="frm.form.valid && register(frm)" novalidate>
+      <div class="image-upload-container">
+        <div class="image-circle" (click)="selectImage()">
+          <img *ngIf="selectedImage" [src]="selectedImage" alt="User Image"/>
+          <div *ngIf="!selectedImage" class="upload-icon"></div>
+          <div class="small-circle">
+            <ion-icon class="camera-icon" name="camera"></ion-icon>
+          </div>
+        </div>
+        <input type="file" id="imageInput" (change)="onImageSelected($event)" hidden/>
+      </div>
+      
+      <ion-list mode="md">
+        <div class="horizontal-fields-container">
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Nombres</ion-label>
+            <ion-input
+              type="text"
+              name="name"
+              required
+              [(ngModel)]="registerO.name"
+              id="name"
+              [ngClass]="{ 'is-invalid':
+          frm.submitted && name.invalid }"
+              #name="ngModel"
+            ></ion-input>
+          </div>
+
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Apellidos</ion-label>
+            <ion-input
+              type="text"
+              name="lastname"
+              required
+              [(ngModel)]="registerO.lastname"
+              id="lastname"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && lastname.invalid }"
+              #lastname="ngModel"
+            ></ion-input>
+          </div>
+        </div>
+
+        <div class="horizontal-fields-container">
+          <div class="item">
+            <ion-label color="primary" class="select-label"
+              >Identificación</ion-label
+            >
+            <ion-select
+              interface="popover"
+              name="typeID"
+              required
+              [(ngModel)]="registerO.typeID"
+              id="typeID"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && typeID.invalid }"
+              #typeID="ngModel"
+            >
+              <ion-select-option
+                *ngFor="let item of tiposID"
+                value="{{item.valor}}"
+                required
+                >{{item.etiqueta}}</ion-select-option
+              >
+            </ion-select>
+          </div>
+
+          <div
+            class="item horizontal-fields-id"
+            *ngIf="registerO.typeID !== 'pasaporte'"
+          >
+            <ion-label color="primary">&nbsp;</ion-label>
+            <ion-input
+              type="number"
+              name="numberID"
+              required
+              [(ngModel)]="registerO.numberID"
+              id="numberID"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && numberID.invalid }"
+              #numberID="ngModel"
+            ></ion-input>
+          </div>
+
+          <div
+            class="item horizontal-fields-id"
+            *ngIf="registerO.typeID === 'pasaporte'"
+          >
+            <!-- <ion-icon color="primary" slot="start" name="id-card-outline"></ion-icon> -->
+            <ion-label color="primary">&nbsp;</ion-label>
+            <ion-input
+              type="text"
+              name="numberID"
+              required
+              [(ngModel)]="registerO.numberID"
+              id="numberID"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && numberID.invalid }"
+              #numberID="ngModel"
+            ></ion-input>
+          </div>
+        </div>
+
+        <div class="item">
+          <ion-label color="primary">Dirección</ion-label>
+          <ion-input
+            type="text"
+            name="address"
+            required
+            [(ngModel)]="registerO.address"
+            id="address"
+            [ngClass]="{ 'is-invalid':
+              frm.submitted && address.invalid }"
+            #address="ngModel"
+          ></ion-input>
+        </div>
+
+        <div class="horizontal-fields-container">
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Departamento</ion-label>
+            <ion-select
+              interface="popover"
+              name="department"
+              required
+              (ionChange)="onDepartmentChange($event)"
+              [(ngModel)]="selectedDepartment"
+              id="department"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && department.invalid }"
+              #department="ngModel"
+            >
+              <ion-select-option
+                *ngFor="let department of departments"
+                [value]="department.id"
+                required
+              >
+                {{ department.name }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Ciudad</ion-label>
+            <ion-select
+              interface="popover"
+              name="city_id"
+              [(ngModel)]="selectedCityId"
+              id="city_id"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && city_id.invalid }"
+              #city_id="ngModel"
+              required
+            >
+              <ion-select-option
+                *ngFor="let township of townships"
+                [value]="township.id"
+                required
+              >
+                {{ township.name }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="item">
+          <!-- <ion-icon color="primary" slot="start" name="call-outline"></ion-icon> -->
+          <ion-label color="primary">Teléfono</ion-label>
+          <ion-input
+            type="number"
+            name="phone"
+            required
+            [(ngModel)]="registerO.phone"
+            id="phone"
+            [ngClass]="{ 'is-invalid':
+              frm.submitted && phone.invalid }"
+            #phone="ngModel"
+          ></ion-input>
+        </div>
+
+        <div class="item">
+          <!-- <ion-icon color="primary" slot="start" name="mail-open-outline"></ion-icon> -->
+          <ion-label color="primary">Email</ion-label>
+          <ion-input
+            type="email"
+            name="email"
+            required
+            [(ngModel)]="registerO.email"
+            id="email"
+            [ngClass]="{ 'is-invalid':
+              frm.submitted && email.invalid }"
+            #email="ngModel"
+          ></ion-input>
+        </div>
+
+        <div class="item">
+          <!-- <ion-icon color="primary" slot="start" name="lock-closed-outline"></ion-icon> -->
+          <ion-label color="primary">Contraseña</ion-label>
+          <div style="display: flex; align-items: stretch; width: 100%">
+            <ion-input
+              type="password"
+              name="password"
+              required
+              [(ngModel)]="registerO.password"
+              id="password"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && password.invalid }"
+              #password="ngModel"
+              type="{{ passwordVisible ? 'text' : 'password' }}"
+            ></ion-input>
+          </div>
+        </div>
+
+        <div class="item">
+          <!-- <ion-icon color="primary" slot="start" name="lock-closed"></ion-icon> -->
+          <ion-label color="primary">Confirmar la contraseña</ion-label>
+          <div style="display: flex; align-items: stretch; width: 100%">
+            <ion-input
+              type="password"
+              name="confirmPassword"
+              required
+              [(ngModel)]="registerO.confirmPassword "
+              id="confirmPassword"
+              [ngClass]="{ 'is-invalid':
+              frm.submitted && confirmPassword.invalid }"
+              #confirmPassword="ngModel"
+              type="{{ passwordVisible ? 'text' : 'password' }}"
+            >
+            </ion-input>
+          </div>
+        </div>
+
+        <ion-item lines="none" class="show-pass">
+          <ion-checkbox
+            (click)="togglePasswordVisibility()"
+            mode="ios"
+            slot="start"
+          ></ion-checkbox>
+          <ion-label style="margin: 0">Mostrar contraseña</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <section class="terms">
+        <ion-item>
+          <ion-label>
+            Al registrarte, aceptas nuestra 
+            <a (click)="abrirPoliticas()" class="bottomLink">
+              política de privacidad y tratamiento de datos
+            </a>.
+          </ion-label>
+          <ion-checkbox slot="end" name="aceptarTerminos" [(ngModel)]="registerO.aceptarTerminos"></ion-checkbox>
+        </ion-item>
+      </section>
+      
+
+      <section id="buttons">
+        <button class="button" style="padding: 0 30px" type="submit">
+          Regístrate
+        </button>
+      </section>
+    </form>
+  </main>
+</ion-content>

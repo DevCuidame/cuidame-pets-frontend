@@ -1,0 +1,16 @@
+<ion-content class="background">
+  <doctor-app-header-land></doctor-app-header-land>
+  <div class="container-top">
+    <div class="doctor" *ngIf="doctor">
+      <img [src]="doctor.icon_bs64" [alt]="'Dr. ' + doctor.first_name + ' ' + doctor.last_name" />
+      <div>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</div>
+    </div>
+    
+  </div>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <div class="container-bot"></div> -->
+
+</ion-content>
+<!-- <app-doctor-tab-bar-land></app-doctor-tab-bar-land> -->

@@ -1,0 +1,93 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+  <!-- OBLIGATORIOS -->
+  <div>
+    <label>Referencia:</label>
+    <input formControlName="reference" type="text" required>
+  </div>
+  <div>
+    <label>Monto:</label>
+    <input formControlName="amount" type="number" required>
+  </div>
+  <div>
+    <label>Moneda:</label>
+    <input formControlName="currency" type="text" required value="COP">
+  </div>
+  <div>
+    <label>Fecha de Expiración:</label>
+    <input formControlName="expirationTime" type="datetime-local" required>
+  </div>
+  <div>
+    <label>URL de Redirección:</label>
+    <input formControlName="redirectUrl" type="url" required value="https://transaction-redirect.wompi.co/check">
+  </div>
+  <!-- Impuestos -->
+  <div formGroupName="taxInCents">
+    <div>
+      <label>IVA (en centavos):</label>
+      <input formControlName="vat" type="number" required>
+    </div>
+    <div>
+      <label>Impuesto al Consumo (en centavos):</label>
+      <input formControlName="consumption" type="number" required>
+    </div>
+  </div>
+  <!-- Datos del Cliente -->
+  <div formGroupName="customerData">
+    <div>
+      <label>Email:</label>
+      <input formControlName="email" type="email" required>
+    </div>
+    <div>
+      <label>Nombre Completo:</label>
+      <input formControlName="fullName" type="text" required>
+    </div>
+    <div>
+      <label>Número de Teléfono:</label>
+      <input formControlName="phoneNumber" type="tel" required>
+    </div>
+    <div>
+      <label>Prefijo de Teléfono:</label>
+      <input formControlName="phoneNumberPrefix" type="text" required value="+57">
+    </div>
+    <div>
+      <label>Documento de Identidad:</label>
+      <input formControlName="legalId" type="text" required>
+    </div>
+    <div>
+      <label>Tipo de Documento:</label>
+      <input formControlName="legalIdType" type="text" required value="CC">
+    </div>
+  </div>
+  <!-- Dirección de Envío -->
+  <div formGroupName="shippingAddress">
+    <div>
+      <label>Dirección Línea 1:</label>
+      <input formControlName="addressLine1" type="text" required>
+    </div>
+    <div>
+      <label>Dirección Línea 2:</label>
+      <input formControlName="addressLine2" type="text">
+    </div>
+    <div>
+      <label>País:</label>
+      <input formControlName="country" type="text" required value="CO">
+    </div>
+    <div>
+      <label>Ciudad:</label>
+      <input formControlName="city" type="text" required>
+    </div>
+    <div>
+      <label>Teléfono:</label>
+      <input formControlName="phoneNumber" type="tel" required>
+    </div>
+    <div>
+      <label>Región:</label>
+      <input formControlName="region" type="text" required>
+    </div>
+    <div>
+      <label>Nombre:</label>
+      <input formControlName="name" type="text" required>
+    </div>
+  </div>
+  <button type="submit">Pagar con Wompi</button>
+</form>

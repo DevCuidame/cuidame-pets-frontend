@@ -1,0 +1,84 @@
+<div class="calendar-container">
+  <div class="c-box">
+    <div class="calendar">
+      <div class="header">
+        <button class="nav-button" (click)="changeYear(-1)">‹</button>
+        <span class="year-display" (click)="toggleYearList()">{{
+          currentYear
+        }}</span>
+        <button class="nav-button" (click)="changeYear(1)">›</button>
+        <button class="nav-button" (click)="changeMonth(-1)">‹</button>
+        <span class="month-display" (click)="toggleMonthList()">{{
+          months[currentMonth]
+        }}</span>
+        <button class="nav-button" (click)="changeMonth(1)">›</button>
+      </div>
+      <div class="year-list" *ngIf="showYearList">
+        <div *ngFor="let year of years" (click)="selectYear(year)">
+          {{ year }}
+        </div>
+      </div>
+      <div class="month-list" *ngIf="showMonthList">
+        <div
+          *ngFor="let month of months; let i = index"
+          (click)="selectMonth(i)"
+        >
+          {{ month }}
+        </div>
+      </div>
+      <div class="week-days">
+        <div>LUN</div>
+        <div>MAR</div>
+        <div>MIE</div>
+        <div>JUE</div>
+        <div>VIE</div>
+        <div>SAB</div>
+        <div class="sunday">DOM</div>
+      </div>
+      <div class="days">
+        <div
+          *ngFor="let day of daysInMonth; let i = index"
+          [class.other-month]="day.otherMonth"
+          [class.selected]="isSelectedDay(day)"
+          [class.today]="isToday(day.date)"
+          (click)="selectDate(day)"
+        >
+          {{ day.date.getDate() }}
+        </div>
+      </div>
+      <button class="today-button" (click)="goToToday()">Hoy</button>
+    </div>
+    <div class="description">
+      <div class="available">
+        <div class="available-cirlce"></div>
+        <p>Agenda No Disponible</p>
+      </div>
+
+      <div class="available">
+        <div class="noavailable-cirlce"></div>
+        <p>Agenda Disponible</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hours">
+    <div class="hours-column">
+      <div
+        *ngFor="let hour of hours.slice(0, 3)"
+        (click)="selectHour(hour)"
+        [class.selected]="hour === selectedHour"
+      >
+        <p style="padding: 0 5px">{{ hour }}</p>
+      </div>
+    </div>
+    <div class="hours-column">
+      <div
+        *ngFor="let hour of hours.slice(3)"
+        (click)="selectHour(hour)"
+        [class.selected]="hour === selectedHour"
+      >
+        <p style="padding: 0 5px">{{ hour }}</p>
+      </div>
+    </div>
+  </div>
+</div>

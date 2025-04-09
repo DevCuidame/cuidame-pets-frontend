@@ -1,0 +1,93 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>initial</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+    <form #fLogin="ngForm" class="form">
+      <div mode="md" class="item">
+        <ion-label color="primary">E-mail</ion-label>
+        <div class="ion-input">
+          <ion-input
+            type="email"
+            color="undefined"
+            name="email"
+            [(ngModel)]="logUser.username"
+            required
+          ></ion-input>
+        </div>
+      </div>
+
+      <div mode="md" class="item">
+        <ion-label color="primary">Contraseña</ion-label>
+        <div class="ion-input">
+          <ion-input
+            type="{{ passwordVisible ? 'text' : 'password' }}"
+            name="password"
+            [(ngModel)]="logUser.password"
+            required
+          ></ion-input>
+        </div>
+
+        <ion-item lines="none" class="show-pass">
+          <ion-checkbox
+            (click)="togglePasswordVisibility()"
+            mode="ios"
+            slot="start"
+          ></ion-checkbox>
+          <ion-label>Mostrar contraseña</ion-label>
+        </ion-item>
+
+        <p class="forgot-pass" routerLink="/resetpassword">
+          ¿Olvidaste tu contraseña?
+        </p>
+      </div>
+    </form>
+
+    <section id="buttons">
+      <div class="button" (click)="login(fLogin)">
+        <label>Iniciar sesión</label>
+        <!-- <div
+          class="circle"
+          style="width: 63px; height: 63px; top: -39px; left: 10px"
+        ></div>
+        <div
+          class="circle"
+          style="width: 60px; height: 60px; top: -40px; right: 80px"
+        ></div>
+        <div
+          class="circle"
+          style="width: 60px; height: 60px; bottom: -40px; left: 44px"
+        ></div>
+        <div
+          class="circle"
+          style="width: 60px; height: 60px; top: -30px; right: 209px"
+        ></div>
+
+        <div
+          class="circle"
+          style="width: 60px;
+          height: 60px;
+          top: -45px;
+          right: -11px"
+        ></div>
+
+        <div
+          class="circle"
+          style="width: 40px;
+          height: 40px;
+          top: 11px;
+          right: 36px"
+        ></div> -->
+      </div>
+
+      <p class="no-account">
+        ¿No tienes cuenta?
+        <strong routerLink="/register">Regístrate</strong>
+      </p>
+    </section>
+  </main>
+</ion-content>

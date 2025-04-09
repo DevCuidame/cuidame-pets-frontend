@@ -1,0 +1,377 @@
+<div class="modal-header">
+  <p>{{ title }}</p>
+  <i (click)="dismiss()" class="fa-solid fa-xmark"></i>
+</div>
+
+<form>
+  @if(entityType==='disease'){
+  <div class="modal-container">
+    <p>¿Tu familiar tiene alguna enfermedad?</p>
+    <div>
+      <ion-list>
+        @for(item of _diseases; let idx = $index; track item;){
+        <!-- <p id="numeral">Enfermedad {{ idx + 1 }}:</p> -->
+        <ion-item>
+          <ion-input
+            label="Enfermedad {{ idx + 1 }}"
+            labelPlacement="floating"
+            name="{{ idx }}"
+            type="text"
+            [(ngModel)]="_diseases[idx].enfermedad"
+            required
+          ></ion-input>
+        </ion-item>
+        }
+      </ion-list>
+      <div class="buttons">
+        <p id="add" (click)="addDisease(true)">
+          Agregar
+          <ion-icon slot="start" name="add"></ion-icon>
+        </p>
+        @if(_diseases.length > 0){
+        <p id="remove" (click)="addDisease(false)" style="text-align: end">
+          Quitar
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+
+  } @else if(entityType === 'disability'){
+  <div class="modal-container">
+    <p>¿Tu familiar tiene alguna discapacidad?</p>
+    <div>
+      <ion-list>
+        <ion-item>
+          <ion-input
+            label="Discapacidad o condición"
+            labelPlacement="floating"
+            name="discapacidad"
+
+            type="text"
+            [(ngModel)]="disability[0].discapacidad"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <p>¿Tu familiar tiene algún distintivo?</p>
+        <ion-item>
+          <ion-input
+            label="Cicatrices"
+            labelPlacement="floating"
+            name="cicatrices"
+      
+            type="text"
+            required
+            [(ngModel)]="disability[0].cicatrices"
+          ></ion-input>
+        </ion-item>
+        @if (gender === 'femenino'){
+          <ion-item>
+            <ion-select
+              label="Embarazada"
+              labelPlacement="floating"
+              name="embarazada"
+              [(ngModel)]="disability[0].embarazada"
+              interface="popover"
+              placeholder="Selecciona"
+            >
+              <ion-select-option value="Si">Sí</ion-select-option>
+              <ion-select-option value="No">No</ion-select-option>
+            </ion-select>
+          </ion-item>
+          
+        }
+        <ion-item>
+          <ion-input
+            label="Tatuajes"
+            labelPlacement="floating"
+            name="tatuajes"
+
+            type="text"
+            required
+            [(ngModel)]="disability[0].tatuajes"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+  } @else if(entityType === 'antecedent'){
+  <div class="modal-container">
+    <p>¿Tu familiar tiene algún antecedente?</p>
+    <div>
+      <ion-list>
+        @for(item of antecedent; let idx = $index; track item;){
+        <p style="padding: 0 10px" id="numeral">
+          Antecedente personal {{ idx + 1 }}:
+        </p>
+
+        <ion-item>
+          <ion-select
+            label="Tipo de antecedente"
+            labelPlacement="floating"
+            interface="popover"
+            name="tipoAntecedente{{ idx }}"
+            placeholder="Seleccionar..."
+            [(ngModel)]="antecedent[idx].tipoAntecedente"
+            required
+          >
+            <ion-select-option value="patológico" required
+              >Patológicos</ion-select-option
+            >
+            <ion-select-option value="quirúrgico" required
+              >Quirúrgicos</ion-select-option
+            >
+            <ion-select-option value="traumático" required
+              >Traumáticos</ion-select-option
+            >
+            <ion-select-option value="farmacológicos" required
+              >Farmacológicos</ion-select-option
+            >
+            <ion-select-option value="otros" required>Otros</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            label="Descripción"
+            labelPlacement="floating"
+            name="descripcionAntecedente{{ idx }}"
+            type="text"
+            [(ngModel)]="antecedent[idx].descripcionAntecedente"
+            required
+          ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Fecha"
+            labelPlacement="floating"
+            name="fechaAntecedente{{ idx }}"
+            type="date"
+            placeholder="dd/mm/yyyy"
+            [(ngModel)]="antecedent[idx].fechaAntecedente"
+            required
+          ></ion-input>
+        </ion-item>
+
+        }
+      </ion-list>
+      <div class="buttons">
+        <p id="add" (click)="addAntecedent(true)">
+          Agregar
+          <ion-icon slot="start" name="add"></ion-icon>
+        </p>
+        @if(antecedent.length > 0){
+        <p id="remove" (click)="addAntecedent(false)" style="text-align: end">
+          Quitar
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+  } @else if(entityType === 'antecedentRelative'){
+  <div class="modal-container">
+    <p>¿Los familiares tienen alguna enfermedad?</p>
+    <div>
+      <ion-list>
+        @for(item of antecedentRelative; let idx = $index; track item;){
+        <p style="padding: 0 10px" id="numeral">
+          Antecedente familiar {{ idx + 1 }}:
+        </p>
+        <ion-item>
+          <ion-select
+            label="Tipo de enfermedad"
+            labelPlacement="floating"
+            interface="popover"
+            name="tipoAntecedenteF{{ idx }}"
+            placeholder="Seleccionar..."
+            [(ngModel)]="antecedentRelative[idx].tipoAntecedenteF"
+            required
+          >
+            <ion-select-option value="patológico" required
+              >Patológicos</ion-select-option
+            >
+            <ion-select-option value="quirúrgico" required
+              >Quirúrgicos</ion-select-option
+            >
+            <ion-select-option value="otros" required>Otros</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Parentesco"
+            labelPlacement="floating"
+            name="parentescoF{{ idx }}"
+            type="text"
+            [(ngModel)]="antecedentRelative[idx].parentescoF"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            label="Descripción"
+            labelPlacement="floating"
+            name="descripcionAntecedenteF{{ idx }}"
+            type="text"
+            [(ngModel)]="antecedentRelative[idx].descripcionAntecedenteF"
+            required
+          ></ion-textarea>
+        </ion-item>
+
+        }
+      </ion-list>
+      <div class="buttons">
+        <p id="add" (click)="addRelativeAntecedent(true)">
+          Agregar
+          <ion-icon slot="start" name="add"></ion-icon>
+        </p>
+        @if(antecedentRelative.length > 0){
+        <p
+          id="remove"
+          (click)="addRelativeAntecedent(false)"
+          style="text-align: end"
+        >
+          Quitar
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+  } @else if(entityType === 'medicaments'){
+
+  <div class="modal-container">
+    <p>¿Tu familiar usa medicamentos?</p>
+    <div>
+      <ion-list>
+        @for(item of medicaments; let idx = $index; track item;){
+        <p style="padding: 0 10px" class="numeral">
+          Medicamento {{ idx + 1 }}:
+        </p>
+        <ion-item>
+          <ion-input
+            label="Medicamento"
+            labelPlacement="floating"
+            name="medicamento{{ idx }}"
+            type="text"
+            [(ngModel)]="medicaments[idx].medicamento"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Laboratorio"
+            labelPlacement="floating"
+            name="laboratorio{{ idx }}"
+            type="text"
+            [(ngModel)]="medicaments[idx].laboratorio"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Dósis"
+            labelPlacement="floating"
+            name="formula{{ idx }}"
+            type="text"
+            [(ngModel)]="medicaments[idx].formula"
+            required
+          ></ion-input>
+        </ion-item>
+        }
+      </ion-list>
+      <div class="buttons">
+        <p id="add" (click)="addMedicament(true)">
+          Agregar
+          <ion-icon slot="start" name="add"></ion-icon>
+        </p>
+        @if(medicaments.length > 0){
+        <p id="remove" (click)="addMedicament(false)" style="text-align: end">
+          Quitar
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+
+  } @else if(entityType === 'allergy'){
+  <div class="modal-container">
+    <p>¿Tu familiar tiene alguna alergia?</p>
+    <div>
+      <ion-list>
+        @for(item of allergies; let idx = $index; track item;){
+        <p style="padding: 0 10px" class="numeral">Alergia {{ idx + 1 }}:</p>
+        <ion-item>
+          <ion-input
+            label="Tipo de alergia"
+            labelPlacement="floating"
+            name="tipoAlergia{{ idx }}"
+            type="text"
+            [(ngModel)]="allergies[idx].tipoAlergia"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea
+            label="Descripción"
+            labelPlacement="floating"
+            name="descripcionAlergia{{ idx }}"
+            type="text"
+            [(ngModel)]="allergies[idx].descripcion"
+            required
+          ></ion-textarea>
+        </ion-item>
+        }
+      </ion-list>
+      <div class="buttons">
+        <p id="add" (click)="addAllergy(true)">
+          Agregar
+          <ion-icon slot="start" name="add"></ion-icon>
+        </p>
+        @if(allergies.length > 0){
+        <p id="remove" (click)="addAllergy(false)" style="text-align: end">
+          Quitar
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+  } @else if(entityType === 'vaccine'){
+  <div class="modal-container">
+    <p>¿Tu familiar tiene vacunas?</p>
+    <div>
+      <ion-list>
+        @for(item of vaccines; let idx = $index; track item;){
+        <p style="padding: 0 10px" class="numeral">Vacuna {{ idx + 1 }}:</p>
+        <ion-item>
+          <ion-input
+            label="Vacuna"
+            labelPlacement="floating"
+            name="vacuna{{ idx }}"
+            type="text"
+            [(ngModel)]="vaccines[idx].vacuna"
+            required
+          ></ion-input>
+        </ion-item>
+        }
+      </ion-list>
+      <div class="buttons">
+        <p id="add" (click)="addVaccine(true)">
+          Agregar
+          <ion-icon slot="start" name="add"></ion-icon>
+        </p>
+        @if(vaccines.length > 0){
+        <p id="remove" (click)="addVaccine(false)" style="text-align: end">
+          Quitar
+        </p>
+        }
+      </div>
+    </div>
+  </div>
+  }
+</form>
+<button expand="full" (click)="save()">Guardar</button>

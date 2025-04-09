@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cuídame</title>
+
+    <base href="/" />
+
+    <!-- Google Chart Library -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- add to homescreen for ios -->
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- Google Maps Script -->
+
+    <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNQzsPV3tL4Q1991sNAG1cuF0sOCUbSpY&callback=initMap&libraries=&v=weekly"
+      async defer
+    ></script> -->
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOYnIDyO_2Fy1XkEz9XN_Y_Kv4YTyV1NI&amp;libraries=&amp;v=weekly"
+      async=""
+      defer=""
+    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOYnIDyO_2Fy1XkEz9XN_Y_Kv4YTyV1NI&libraries=places"></script>
+    <script
+      src="https://cdn.wompi.co/libs/js/v1.js"
+      data-public-key="pub_test_cI8wkLBO42suNLMwlXnvPW10RMMpQvVM"
+    ></script>
+
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+  </head>
+
+  <body>
+    <app-root></app-root>
+    <noscript
+      >Please enable JavaScript to continue using this application.</noscript
+    >
+  </body>
+</html>

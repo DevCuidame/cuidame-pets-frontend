@@ -1,0 +1,150 @@
+.page-header {
+  // position: -webkit-sticky; 
+  // position: sticky;
+  // top: 0;
+  // z-index: 1000; 
+  background: url("/assets/vets/background.svg");
+  border-radius: 0 0 20px 20px;
+  padding: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.page-header.scrolled {
+  background-color: rgba(0, 0, 0, 0.75); 
+  transition: background-color 0.3s ease-in-out;
+}
+
+.page-header.transparent {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  opacity: 0.9;
+}
+
+.logo {
+  align-self: center;
+  margin-left: 1.2rem;
+  cursor: pointer;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: normal;
+  color: #0d0a63;
+  margin: 0;
+}
+
+.logo-cuidame {
+  width: 7rem;
+}
+
+.nav-bar {
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-bar a {
+  color: #6c6aa1;
+  padding: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.nav-bar a:hover {
+  color: #f88810;
+}
+
+.menu-icon {
+  color: #6c6aa1;
+  cursor: pointer;
+  display: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  font-size: 1rem;
+  border: 1px solid #6c6aa1;
+  border-radius: 50px;
+  color: #6c6aa1;
+  padding: 1rem 4rem;
+  background: transparent;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+    border 0.3s ease-in-out;
+}
+
+button:hover {
+  border: 1px solid #fff;
+  background: #6c6aa1;
+  color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  .page-header {
+    background-color: var(--bgcolor);
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+    color: #0d0a63;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .page-header.transparent {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    opacity: 0.9;
+  }
+
+  .logo-cuidame {
+    width: 4rem;
+  }
+
+  .nav-bar {
+    display: none;
+    position: absolute;
+    top: 5.7rem;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    z-index: 1;
+    border-radius: 20px;
+  }
+
+  .nav-bar.responsive {
+    display: block;
+  }
+
+  .nav-bar a {
+    display: block;
+  }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+
+  button {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+}

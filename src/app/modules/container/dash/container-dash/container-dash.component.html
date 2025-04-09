@@ -1,0 +1,8 @@
+<ion-content  #content [ngClass]="getBackgroundClass()">
+  <app-header-dash *ngIf="shouldShowFlag()"></app-header-dash>
+  <main [ngClass]="getMainClass()">
+    <app-header-greeting *ngIf="shouldShowGreeting()"></app-header-greeting>
+    <router-outlet></router-outlet>
+  </main>
+</ion-content>
+<app-tab-bar-dash [enableBackButton]="true" [enableMiddleButton]="true" [enableExitButton]="true"></app-tab-bar-dash>

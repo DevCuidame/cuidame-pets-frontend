@@ -1,0 +1,41 @@
+$primary-color: #0d0a63;
+$secondary-color: #6C6AA1;
+
+
+
+.short-modal {
+  background: rgba(0, 0, 0, 0.5) !important;
+  padding: 20% 10% !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+ion-loading.custom-loading {
+  --background: #e3edff;
+  --spinner-color: #1c6dff;
+
+  color: #1c6dff;
+}
+
+:root {
+  .popover-content {
+    left: 0 !important;
+    width: 100%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c6aa1 !important;
+  border-radius: 10px !important;
+  border: 2px solid #f1f1f1 !important;
+}

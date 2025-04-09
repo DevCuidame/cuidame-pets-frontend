@@ -1,0 +1,139 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="request === 'veterinary'" class="top">
+    <div
+      class="sign"
+      (click)="selectOption('Virtual')"
+      [class.selected]="selectedOption === 'Virtual'"
+    >
+      Virtual
+    </div>
+    <div
+      class="sign"
+      (click)="selectOption('Domicilio')"
+      [class.selected]="selectedOption === 'Domicilio'"
+    >
+      Domicilio
+    </div>
+    <div
+      class="sign"
+      (click)="selectOption('Consultorio')"
+      [class.selected]="selectedOption === 'Consultorio'"
+    >
+      Consultorio
+    </div>
+    <div
+      class="sign"
+      (click)="selectOption('Todos')"
+      [class.selected]="selectedOption === 'Todos'"
+    >
+      Todos
+    </div>
+  </div>
+
+  <div class="top" *ngIf="request === 'lab'">
+    <div
+      class="sign"
+      (click)="selectOption('sterilization')"
+      [class.selected]="selectedOption === 'sterilization'"
+    >
+      Esterilización
+    </div>
+    <div
+      class="sign"
+      (click)="selectOption('others')"
+      [class.selected]="selectedOption === 'others'"
+    >
+      Otros
+    </div>
+    <div
+      class="sign"
+      (click)="selectOption('Todos')"
+      [class.selected]="selectedOption === 'Todos'"
+    >
+      Todos
+    </div>
+  </div>
+
+  <div class="top" *ngIf="request === 'all'">
+    <div
+      class="sign"
+      (click)="selectOption('Todos')"
+      [class.selected]="selectedOption === 'Todos'"
+    >
+      Todos
+    </div>
+  </div>
+
+  <div class="left">
+    <div class="sign" (click)="locateUser()">Ubicarme</div>
+  </div>
+
+ <div class="container">
+   <!-- 
+    <div *ngIf="showCard" class="vet-card">
+      <div class="vet-container">
+        <div class="vet-info">
+          <img
+            class="vet-profile"
+            src="/assets/pets/image-veterinarian.svg"
+            alt=""
+          />
+        </div>
+        <div class="vet-info">
+          <div class="info">
+            <label class="vet-title">{{place.name}}</label>
+            <label class="vet-desc">Nombre</label>
+          </div>
+          <div class="info">
+            <label class="vet-title">{{place.plus_code.compound_code}}</label>
+            <label class="vet-desc">Ubicación</label>
+          </div>
+          <div class="info">
+            <label class="vet-title">{{place.vicinity}}</label>
+            <label class="vet-desc">Dirección</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showClinic" class="vet-card">
+      <div class="vet-container">
+        <div class="vet-info">
+          <img
+            class="vet-profile"
+            src="/assets/pets/image-veterinarian.svg"
+            alt=""
+          />
+        </div>
+        <div class="vet-info">
+          <div class="info">
+            <label class="vet-title">{{clinics.business_name}}</label>
+            <label class="vet-desc">Nombre</label>
+          </div>
+          <div class="info">
+            <label class="vet-title">{{clinics.plus_code.compound_code}}</label>
+            <label class="vet-desc">Ubicación</label>
+          </div>
+          <div class="info">
+            <label class="vet-title">{{clinics.vicinity}}</label>
+            <label class="vet-desc">Dirección</label>
+          </div>
+        </div>
+      </div>
+    </div>
+-->
+    <div class="sign">
+      <ion-icon
+        class="ico"
+        src="/assets/images/logo_cuidame.svg"
+        alt="cuidame"
+      ></ion-icon>
+      <label>Veterinarias en tu zona</label>
+    </div>
+  </div> 
+  <div #map id="map"></div>
+</ion-content>
+
+<div *ngIf="loading" class="loading-overlay">
+  <div class="loading-spinner"></div>
+</div>

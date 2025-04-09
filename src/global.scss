@@ -1,0 +1,114 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+ion-popover [popover]:not(:popover-open):not(dialog[open]) {
+  display: contents;
+}
+
+html, body {
+  scroll-behavior: smooth; /* Para un desplazamiento suave */
+}
+
+
+
+button.action-sheet-button.ion-activatable.ion-focusable.sc-ion-action-sheet-ios {
+  span.action-sheet-button-inner.sc-ion-action-sheet-ios {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+}
+
+
+::host ion-modal {
+  height: 50%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 1px 1px 0px 10px;
+}
+
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c6aa1 !important;
+  border-radius: 10px !important;
+  border: 2px solid #f1f1f1 !important;
+}
+
+
+ion-modal {
+  // padding: 10%;
+  --min-width: 250px;
+  // --height: fit-content;
+  // --max-height: 90%;
+  --border-radius: 20px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4); 
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: #fff;
+  --color: #275289;
+  
+}
+
+
+
+ion-segment {
+  background: transparent;
+  padding: 4px;
+}
+
+ion-segment-button {
+  --background: #fff;
+  --border-radius: 8px;
+  --color-checked: #fff;
+  --color: #275289;
+  --indicator-color: #2b6cb0;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 4px;
+  transition: background 0.3s ease;
+}
+
+ion-segment-button.checked {
+  --background: #2b6cb0;
+  --color: #fff;
+}

@@ -1,0 +1,148 @@
+<div style="margin-top: 40%">
+  <div class="info">
+    <p>Por favor, ingresa los datos de medicamentos de tu mascota.</p>
+  </div>
+
+  <form #frm="ngForm"
+  (submit)="frm.form.valid && add(frm)"
+  novalidate >
+    <ion-list mode="md">
+      <div class="item">
+        <ion-label>Tipo de Tratamiento</ion-label>
+        <select
+          interface="popover"
+          class="blue-select"
+          name="typeTreatment"
+          [(ngModel)]="treatment.typeTreatment"
+          id="typetreatment"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && typetreatment.invalid }"
+          #typetreatment = "ngModel"
+          required
+          ngDefaultControl
+        >
+          <option value="Medicado">Medicado</option>
+          <option value="Terapéutico">Terapéutico</option>
+          <option value="Higiene y Cuidado">Higiene y Cuidado</option>
+        </select>
+      </div>
+
+      <div class="item">
+        <ion-label>Nombre</ion-label>
+        <ion-input
+          type="text"
+          name="name"
+          maxlength=20
+          [(ngModel)]="treatment.name"
+          id="name"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && name.invalid }"
+          #name = "ngModel"
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label>Estado</ion-label>
+          <select
+            interface="popover"
+            class="orange-select"
+            name="status"
+            [(ngModel)]="treatment.status"
+            id="status"
+            [ngClass]="{ 'is-invalid':
+            frm.submitted && status.invalid }"
+            #status = "ngModel"
+            required
+            ngDefaultControl
+          >
+            <option value="Sin iniciar">Sin iniciar</option>
+            <option value="En Tratamiento">En Tratamiento</option>
+            <option value="Finalizado">Finalizado</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label>Fecha de Incio</ion-label>
+          <ion-input
+            type="date"
+            class="input-orange"
+            name="startDate"
+            [(ngModel)]="treatment.startDate"
+            id="startdate"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && startdate.invalid }"
+          #startdate = "ngModel"
+            required
+            ngDefaultControl
+          >
+          </ion-input>
+        </div>
+
+        <div class="item horizontal-fields">
+          <ion-label>Fecha de Fin</ion-label>
+          <ion-input
+            type="date"
+            class="input-orange"
+            name="endDate"
+            [(ngModel)]="treatment.endDate"
+            id="enddate"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && enddate.invalid }"
+          #enddate = "ngModel"
+            required
+            ngDefaultControl
+          ></ion-input>
+        </div>
+      </div>
+
+      <div class="item">
+        <ion-label>Programar Fecha o Frecuencia</ion-label>
+        <ion-input
+          interface="popover"
+          class="input-orange"
+          name="frequency"
+          maxlength=50
+          [(ngModel)]="treatment.frequency"
+          id="frequency"
+          [ngClass]="{ 'is-invalid':
+          frm.submitted && frequency.invalid }"
+          #frequency = "ngModel"
+          required
+          ngDefaultControl
+        >
+        </ion-input>
+      </div>
+    </ion-list>
+    <div class="plus-add-container" *ngIf="button">
+      <button
+        class="plus-add"
+        style="background-color: #fff"
+        type="submit"
+      >
+        <label>+ Guardar</label>
+      </button>
+    </div>
+    <div class="plus-add-container" *ngIf="!button">
+      <button
+        class="plus-add"
+        style="background-color: #fff"
+        type="submit"
+      >
+        <label>+ Guardar</label>
+      </button>
+    </div>
+    <div class="buttons">
+      <button *ngIf="button" class="button" (click)="goToVeterinarian()">
+        <label>Continuar</label>
+      </button>
+      <button *ngIf="!button" class="button" (click)="goToHistory()">
+        <label>Continuar</label>
+      </button>
+    </div>
+  </form>
+</div>

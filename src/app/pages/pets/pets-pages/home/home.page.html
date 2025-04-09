@@ -1,0 +1,48 @@
+<div class="home">
+  <div class="container-greeting">
+    <div class="greeting-labels">
+      <label class="greeting">Hola, {{name}}</label>
+      <label class="greeting-time">{{greetingMessage}}</label>
+    </div>
+  </div>
+
+  <div class="home-container">
+    <div class="profile-container">
+      <div class="circle left">
+        <img [src]="photoProfile" [alt]="name" />
+      </div>
+      <div class="content">
+        <div class="username">{{fullName}}</div>
+        <!-- <div class="small-text">Premium</div> -->
+      </div>
+    </div>
+
+    <div class="relatives-number">
+      <p>
+        <span>{{petsInCare}}</span> Mascotas a cargo
+      </p>
+    </div>
+
+    <ng-template #loading>
+      <div class="all-pets-container"></div>
+    </ng-template>
+    @if(finishedLoading) {
+      <div class="card-container">
+        @for (pet of petsArray; track pet.nombre) {
+        <div class="card" (click)="goToPet(pet.id, pet.agreement)">
+          <img src="{{productionServerUrl}}{{pet.photourl}}" [alt]="pet.nombre" />
+          <h3 appResizeText>{{pet.nombre.split(' ')[0]}}</h3>
+          <img class="crown" src="/assets/avatars/crown.svg" alt="basic" />
+        </div>
+        }
+        <div class="add-card" (click)="goToCreatePet()">
+          <div class="add-circle"><i class="fa-solid fa-circle-plus"></i></div>
+        </div>
+      </div>
+    } @else {
+      <ng-template #loading>
+        <div class="all-pets-container"></div>
+      </ng-template>
+    }
+  </div>
+</div>

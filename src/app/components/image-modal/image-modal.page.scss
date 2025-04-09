@@ -1,0 +1,34 @@
+::host ion-modal {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  --background: (--ion-background-color, transparent) !important;
+}
+
+:host ion-modal .ios.modal-default.hydrated.show-modal {
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  --background: (--ion-background-color, transparent) !important;
+
+  }
+
+  ion-modal.ios.modal-default {
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  --background: (--ion-background-color, transparent) !important;
+
+  }
+
+
+
+img {
+  border-radius: 20px;
+}
