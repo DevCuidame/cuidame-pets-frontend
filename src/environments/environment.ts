@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
 
-  url: 'http://localhost:3000/',
-  // url: 'https://api.cuidame.tech/',
+  // url: 'http://localhost:3000/',
+  url: 'https://pets-api.cuidame.tech/',
   // images: 'http://localhost:3000/',
   mapsKey: 'AIzaSyBOYnIDyO_2Fy1XkEz9XN_Y_Kv4YTyV1NI'
 };

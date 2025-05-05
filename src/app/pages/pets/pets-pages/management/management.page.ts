@@ -17,6 +17,8 @@ export class ManagementPage implements AfterViewInit, OnInit {
 
   backButtonSubscription: Subscription;
 
+  personaAgreement: string = '';
+
   constructor(
     public navCtrl: NavController,
     private storageService: StorageService,
