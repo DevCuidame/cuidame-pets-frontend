@@ -178,6 +178,6 @@ export class RegisterPage implements OnInit {
   }
 
   abrirPoliticas() {
-    this.inAppBrows.create('https://cuidame.tech/?page_id=690', '_system');
+    this.inAppBrows.create('https://cuidame.tech/privacy-policy/pets', '_system');
   }
 }

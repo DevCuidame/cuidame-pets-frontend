@@ -13,7 +13,6 @@ import { DateTimePipe } from 'src/app/utils/dateTimePipe';
 import { HomePage } from './home/home.page';
 import { ResizeTextDirective } from 'src/app/resize-text.directive';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { GoogleChartsModule } from 'angular-google-charts';
 
 
 
@@ -38,7 +37,6 @@ import { GoogleChartsModule } from 'angular-google-charts';
     ReactiveFormsModule,
     ResizeTextDirective,
     NgApexchartsModule,
-    GoogleChartsModule
 
   ]
 })

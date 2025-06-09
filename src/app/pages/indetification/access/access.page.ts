@@ -7,7 +7,6 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { ToastMessage } from 'src/app/utils/toastMessage';
 import { WaitMessage } from '../../../utils/waitMessage';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
-import { QrScannerPage } from '../../qr-scanner/qr-scanner.page';
 import { VerificationPage } from '../verification/verification.page';
 import { AuthenticationPage } from '../authentication/authentication.page';
 
@@ -115,10 +114,10 @@ ubicacion = {};
   }
 
   async openQRScannerModal(){
-    const modal = await this.modalCtrl.create({
-      component: QrScannerPage
-    });
-    await modal.present();
+    // const modal = await this.modalCtrl.create({
+    //   component: QrScannerPage
+    // });
+    // await modal.present();
   }
 
   // async openVerificationModal(){

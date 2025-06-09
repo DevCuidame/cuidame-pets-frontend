@@ -13,7 +13,7 @@
     "module": "es2020",
     "allowSyntheticDefaultImports": true,
     "lib": ["es2020", "dom"],
-    "types": ["googlemaps"]
+    // "types": ["googlemaps"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

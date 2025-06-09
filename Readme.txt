@@ -2,6 +2,7 @@
 
 ionic capacitor copy android
 ionic capacitor sync android
+npx cap open android
 
 -> First time that you copy the android folder to the android studio workspace
 
@@ -74,6 +75,8 @@ brew upgrade cocoapods
 // icons 
 
 npm install -g cordova-res
+npm install --save-dev @capacitor/assets
+npx capacitor-assets generate
 cordova-res android --skip-config --copy
 
 

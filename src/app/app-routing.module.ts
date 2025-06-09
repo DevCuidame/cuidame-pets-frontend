@@ -73,13 +73,7 @@ const routes: Routes = [
         (m) => m.ContactsPageModule
       ),
   },
-  {
-    path: 'qr-scanner',
-    loadChildren: () =>
-      import('./pages/qr-scanner/qr-scanner.module').then(
-        (m) => m.QrScannerPageModule
-      ),
-  },
+
   {
     path: 'verification/:codeRequest',
     loadChildren: () =>

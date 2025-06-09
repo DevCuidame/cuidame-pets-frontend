@@ -25,7 +25,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DoctorWebModule } from './modules/doctorweb/doctor-web.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { GoogleChartsModule, ScriptLoaderService } from 'angular-google-charts';
 
 //Angular material
 
@@ -35,7 +34,6 @@ import { GoogleChartsModule, ScriptLoaderService } from 'angular-google-charts';
         DoctorWebModule,
         BrowserModule,
         NgApexchartsModule,
-        GoogleChartsModule,
         ToastrModule.forRoot(),
         IonicModule.forRoot(),
         BrowserAnimationsModule,
@@ -54,7 +52,6 @@ import { GoogleChartsModule, ScriptLoaderService } from 'angular-google-charts';
         Camera,
         ImagePicker,
         Network,
-        ScriptLoaderService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
 export class AppModule {}

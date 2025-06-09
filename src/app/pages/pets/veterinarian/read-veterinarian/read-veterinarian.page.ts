@@ -9,7 +9,6 @@ import { StorageService } from 'src/app/services/storage.service';
 import { ToastMessage } from 'src/app/utils/toastMessage';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { UbicacionService } from 'src/app/services/ubication.service';
-import { MapModalComponent } from 'src/app/components/map-modal/map-modal.component';
 
 @Component({
     selector: 'app-read-veterinarian',
@@ -41,10 +40,10 @@ export class ReadVeterinarianPage implements AfterViewInit {
 
   async goMaps() {
     // this.navCtrl.navigateForward('/maps')
-    const modal = await this.modalCtrl.create({
-      component: MapModalComponent,
-    });
-    modal.present();
+    // const modal = await this.modalCtrl.create({
+    //   component: MapModalComponent,
+    // });
+    // modal.present();
   }
   async ngAfterViewInit() {
     this.dataService.setActiveFlag(3);
